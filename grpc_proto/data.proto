@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package example;
+
+service TestService
+{
+  rpc method(Request) returns (Result){}
+}
+
+message Request
+{
+  string request1 = 1;
+  string request2 = 2;
+}
+
+message Result
+{
+  string result1 = 1;
+  string result2 = 2;
+}
+
+
+
+
+
