@@ -25,7 +25,7 @@ $ pip install grpcio-tools
 
 下面我们使用 gRPC 定义一个接口，该接口实现对传入数据进行判断，根据来自不同端（java端或者python端）的请求，返回对应端的数据。
 
-1，创建项目 python demo 工程：
+## 3.1，创建项目 python demo 工程
 
 * client目录下的 main.py 实现了客户端用于发送数据并打印接收到 server 端处理后的数据；
 * server 目录下的 main.py 实现了 server 端用于接收客户端发送的数据，并对数据来自java或者python端的数据进行判断，返回对应端数据给客户端；
@@ -35,7 +35,7 @@ $ pip install grpcio-tools
 
 ![图片](https://uploader.shimo.im/f/gUhxvpNngvFD21CE.png!thumbnail?fileGuid=PvQ9xWT9HYCx6WPY)
 
-2，定义 gRPC 接口：
+## 3.2，定义 gRPC 接口
 
 ```plain
 syntax = "proto3";
@@ -55,7 +55,8 @@ message Result
   string result2 = 2;
 }
 ```
-3，编译 protobuf：
+## 3.3，编译 protobuf
+
 在 proto 目录下编写脚本generate.py，并执行：
 
 ```python
@@ -75,7 +76,7 @@ for file in proto_files:
         print("grpc_proto generation result for '{0}': generation {1}".format(file, status))
 ```
 
-4，实现 server 端：
+## 3.4，实现 server 端
 
 ```python
 #! /usr/bin/env python
@@ -115,7 +116,8 @@ def serve():
 if __name__ == '__main__':
     serve()
 ```
-5，实现 client 端：
+## 3.5，实现 client 端
+
 ```python
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -149,7 +151,13 @@ def run():
 if __name__ == '__main__':
     run()
 ```
-6，执行验证结果：
-* 先启动 server，之后再执行 client；
-* client 侧控制台如果打印的结果为：“received: HELLO,WORLD!” ，证明 gRPC 接口定义成功
+## 3.6，执行验证结果
+
+* 先启动 server
+
+![图片](https://uploader.shimo.im/f/hLc9G4igD9vwXwQv.png!thumbnail?fileGuid=PvQ9xWT9HYCx6WPY)
+
+* 再启动 client；
+
+![图片](https://uploader.shimo.im/f/iSQgAzETRAjwX1ot.png!thumbnail?fileGuid=PvQ9xWT9HYCx6WPY)
 
