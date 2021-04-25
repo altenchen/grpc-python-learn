@@ -23,12 +23,12 @@ $ pip install grpcio-tools
 
 # 三，实践
 
-下面我们使用 gRPC 定义一个接口，该接口实现对传入的数据进行大写的格式化处理。
+下面我们使用 gRPC 定义一个接口，该接口实现对传入数据进行判断，根据来自不同端（java端或者python端）的请求，返回对应端的数据。
 
 1，创建项目 python demo 工程：
 
 * client目录下的 main.py 实现了客户端用于发送数据并打印接收到 server 端处理后的数据；
-* server 目录下的 main.py 实现了 server 端用于接收客户端发送的数据，并对数据进行大写处理后返回给客户端；
+* server 目录下的 main.py 实现了 server 端用于接收客户端发送的数据，并对数据来自java或者python端的数据进行判断，返回对应端数据给客户端；
 * proto 包用于编写 proto 文件并生成 data 接口
 
 整体工程结构目录如下；
